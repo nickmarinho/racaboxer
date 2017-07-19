@@ -1,1 +1,0 @@
-mysqldump --default-character-set=latin1 -hmysql.racaboxer.com.br -uracaboxer -pnick1978 racaboxer > rb.sql

@@ -1,1 +1,0 @@
-mysql -uroot -pgmail racaboxer < rb.sql

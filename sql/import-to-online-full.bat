@@ -1,1 +1,0 @@
-mysql -hmysql.racaboxer.com.br -uracaboxer -pnick1978 racaboxer < rb.sql

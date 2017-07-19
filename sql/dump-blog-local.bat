@@ -1,1 +1,0 @@
-mysqldump --default-character-set=latin1 -uroot -pgmail racaboxer blog > rb-blog.sql
