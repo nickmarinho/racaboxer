@@ -1,0 +1,115 @@
+<?php
+$pagename = $this->pagename;
+$name = $this->name;
+$email = $this->email;
+$category = $this->category;
+echo "<script>newfieldcount = " . count($this->datalist) . ";</script>\n";
+?>
+<script type="text/javascript" src="/js/admin-pos-load.js"></script>
+<script type="text/javascript">
+$("#menu").find("li").each(function(){ $(this).removeClass("ui-tabs-selected ui-state-active"); });
+$("#ima").addClass("ui-tabs-selected ui-state-active");
+$(".ui-icon").hover(
+	function(){ if($(this).parent().get(0).tagName == 'DIV'){ $(this).parent().addClass("ui-state-hover"); } },
+	function(){ if($(this).parent().get(0).tagName == 'DIV'){ $(this).parent().removeClass("ui-state-hover"); } }
+);
+</script>
+<br />
+<table class='sample' style="margin:0 auto;">
+ <tbody>
+  <tr>
+   <td style="text-align:center;width:100%;">
+    <form id="search" method="post" action="">
+     Filter: <input type="text" id="fname" name="fname" value="" onkeypress="javascript:filter('images',event);" size="35" />
+     <input type="text" id="femail" name="femail" value="" onkeypress="javascript:filter('images',event);" size="35" />
+     <a class="button" onclick="filterm('images');" title="Ok">Ok</a>
+	</form>
+   </td>
+  </tr>
+ </tbody>
+</table>
+
+<table class='sample' style="margin:0 auto;" id="grid">
+ <thead>
+  <tr>
+   <th style='width:40px;'>ID</th>
+   <th style='width:350px;'>Name</th>
+   <th style='width:355px;'>Email</th>
+   <th style='width:137px;'>Date</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+  </tr>
+ </thead>
+ <tbody id="list">
+<?php
+if(count($this->datalist) > 0)
+{
+	$c = 0;
+	foreach ($this->datalist as $data)
+	{
+		if($data['display'] == '1')
+		{
+			if(($c % 2) == 0){ $over = "overa"; }
+			else{ $over = "overb"; }
+		}
+		else{ $over = "noover"; }
+?>
+ <tr id='list_<?php echo $c; ?>' class="<?php echo $over; ?>" onmouseover="this.className='over'" onmouseout="this.className='<?php echo $over; ?>'">
+  <td style='text-align:center;width:40px;'><?php echo $data['id']; ?></td>
+  <td style='width:350px;'><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/galeria/foto_<?php echo $data['id']; ?>.html" target="_blank"><?php
+if(!empty($name)) echo str_ireplace($name, "<b class='filterwords'>" . $name . "</b>", (stripslashes($data['name']))); 
+else echo (stripslashes($data['name']));
+?></a></td>
+  <td class="tdtextlink" style='width:355px;' onclick="javascript:sendmail('<?php echo $data['name']; ?>','<?php echo $data['email']; ?>');" title="SendMail: <?php echo $data['id']; ?>">
+<?php
+if(!empty($email)) echo str_ireplace($email, "<b class='filterwords'>" . $email . "</b>", stripslashes($data['email'])); 
+else echo stripslashes($data['email']);
+?>
+  </td>
+  <td style='width:137px;'><?php $cdate = strtotime($data['cdate']); $cdate = date('d/m/Y g:ia', $cdate); echo $cdate; ?></td>
+  <td class='tdpag-icons' onclick="javascript:previewpage('images','<?php echo $data['id']; ?>');">
+   <div class="ui-state-default ui-corner-all pag-icons"><span class="ui-icon ui-icon-newwin" title="Preview ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' id="displayonoff_<?php echo $data['id']; ?>">
+   <div class="ui-state-default ui-corner-all pag-icons" onclick="javascript:displayonoff('images','<?php echo $data['id']; ?>','<?php echo $c; ?>');"><span class="ui-icon ui-icon-<?php if($data['display'] == '1'){ echo 'check'; } else{ echo 'cancel'; } ?>" title="Enable/Disable Display ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' id="editimagecrop_<?php echo $data['id']; ?>">
+   <div class="ui-state-default ui-corner-all pag-icons" onclick="javascript:imageeditcrop('<?php echo $data['id']; ?>');"><span class="ui-icon ui-icon-image" title="Edit Crop ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' id="confirmationmail_<?php echo $data['id']; ?>">
+   <div class="ui-state-default ui-corner-all pag-icons" onclick="javascript:sendconfirmationmail('<?php echo $data['id']; ?>');"><span class="ui-icon ui-icon-mail-closed" title="Send mail to confirm ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' onclick="javascript:editpage('images', '<?php echo $data['id']; ?>');">
+   <div class="ui-state-default ui-corner-all pag-icons"><span class="ui-icon ui-icon-pencil" title="Edit ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' onclick="javascript:removepage('images','<?php echo $data['id']; ?>','<?php echo $c; ?>');">
+   <div class="ui-state-default ui-corner-all pag-icons"><span class="ui-icon ui-icon-trash" title="Remove ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+ </tr>
+ <tr style="display:none;" id='listifrm_<?php echo $data['id']; ?>' class="<?php echo $over; ?>" onmouseover="this.className='over'" onmouseout="this.className='<?php echo $over; ?>'">
+  <td colspan="10"><iframe src="" id="editimagecropifrm_<?php echo $data['id']; ?>" style="border:0;display:none;height:550px;width:994px !important;"></iframe></td>
+ </tr>
+<?php
+		$c++;
+	}
+}
+else
+{
+?>
+ <tr id="list_empty" class="<?php echo $dcolors[$d]; ?>" onmouseover="this.className='over'" onmouseout="this.className='<?php echo $dcolors[$d]; ?>'">
+  <td colspan='7' style='text-align:center;'><a class="button openmodalbox" onclick="javascript:void(0);">Nothing in database, click here to add<input type="hidden" name="ajaxhref" value="/admin/addimages" /></a></td>
+ </tr>
+<?php
+ } ?>
+ </tbody>
+</table>
+
+<div id="paginationdiv">
+<?php 
+if($this->paginator->count() > 1) echo $this->paginationControl($this->paginator, 'Elastic', 'admin' . DS . 'pagination.phtml');
+?>
+</div>

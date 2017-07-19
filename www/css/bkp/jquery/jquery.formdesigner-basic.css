@@ -1,0 +1,76 @@
+.formDesignerSkip {
+	position:absolute; 
+	left:-9999px; 
+	top:-9999px; 
+	width:auto;
+	height:auto;
+}
+div.formDesignerWrapper {
+	position:relative;
+}
+
+
+div.formDesigner * {
+	margin:0;
+	padding:0;
+}
+
+
+/* .formDesignerSelectBox */
+div.formDesignerSelectBox div.formDesignerHeader {
+	cursor:pointer;
+	position:relative;
+	overflow:hidden;
+}
+div.formDesignerSelectBox div.formDesignerHeader div.formDesignerHeaderIcon {
+	position:absolute;
+}
+div.formDesignerSelectBox div.formDesignerOptions {
+	position:absolute; 
+	left:-9999px; 
+	top:-9999px; 
+	z-index:99; 
+	overflow:auto;
+}
+div.formDesignerSelectBox div.formDesignerOptions a,
+div.formDesignerSelectBox div.formDesignerOptions a:link, 
+div.formDesignerSelectBox div.formDesignerOptions a:visited, 
+div.formDesignerSelectBox div.formDesignerOptions a:active {
+	display:block; 
+	clear:both;
+	white-space:nowrap; 
+	text-decoration:none;
+}
+div.formDesignerSelectBox div.formDesignerOptions .formDesignerSpacerLineGrey {
+	display:block; 
+	clear:both; 
+	overflow:hidden; 
+	line-height:0;
+}
+
+
+/* .formDesignerInputRadio, formDesignerInputCheckbox */
+div.formDesignerInputRadio div.formDesignerHeader,
+div.formDesignerInputCheckbox div.formDesignerHeader {
+	cursor:default;
+	position:relative;
+	overflow:hidden;
+}
+div.formDesignerInputRadio div.formDesignerHeader div.formDesignerHeaderIcon,
+div.formDesignerInputCheckbox div.formDesignerHeader div.formDesignerHeaderIcon {
+	position:absolute;
+}
+
+
+/* .formDesignerInputSubmit */
+div.formDesignerInputSubmit {
+	cursor:default;
+	overflow:hidden;
+}
+
+
+/* .formDesignerInputText */
+div.formDesignerInputText {
+	cursor:default;
+	overflow:hidden;
+}

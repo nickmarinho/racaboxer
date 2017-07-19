@@ -1,0 +1,24 @@
+<script type="text/javascript" src="/js/admin-pos-load.js"></script>
+<script type="text/javascript">
+$("#menu").find("li").each(function(){ $(this).removeClass("ui-tabs-selected ui-state-active"); });
+$("#hom").addClass("ui-tabs-selected ui-state-active");
+$(".ui-icon").hover(
+	function(){ if($(this).parent().get(0).tagName == 'DIV'){ $(this).parent().addClass("ui-state-hover"); } },
+	function(){ if($(this).parent().get(0).tagName == 'DIV'){ $(this).parent().removeClass("ui-state-hover"); } }
+);
+</script>
+<br /><br /><br />
+<div class="ui-widget-content ui-corner-all">
+ <h1 style="text-align:center;">Welcome: <span style="color:#000;"><?php echo utf8_encode(stripslashes($this->userdata['name'])); ?></span></h1>
+<?php
+if(!empty($_SESSION['last_login']))
+{
+	$last_login = strtotime($_SESSION['last_login']);
+	$last_login = date('d/m/Y g:ia', $last_login);
+?>
+<h5 style="text-align:center;">Your last time logged was: <span style="color:#000;"><?php echo $last_login; ?></span></h5>
+<?php
+	if(!empty($this->sessionexpiresin)) echo "<h5 style='text-align:center;'>Your session will expires in: <span style='color:#000;'>" . date("d/m/Y g:ia", mktime(date("H"),date("i"),(date("s")+$this->sessionexpiresin),date("m"),date("d"),date("Y"))) . "</span></h5>";
+}
+?>
+</div>

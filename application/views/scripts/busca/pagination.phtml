@@ -1,0 +1,93 @@
+<?php
+$plus = "";
+
+if($_GET['ca'] <> '') $plus .= "&ca=" . $_GET['ca'];
+if(!empty($_GET['pa'])) $plus .= "&pa=" . $_GET['pa'];
+?>
+
+<ul id="pagination">
+<!-- First page link -->
+<?php
+if(isset($this->previous))
+{
+?>
+<li class="previous"><a class="links" href="<?php echo $this->url(array('p' => $this->first)); ?>?1<?php echo $plus; ?>" title="Primeira página">|&laquo;</a></li>
+<?php 
+}
+else
+{
+?>
+<li class="previous-off">|&laquo;</li>
+<?php 
+}
+?>
+
+<!-- Previous page link -->
+<?php
+if (isset($this->previous))
+{
+?>
+<li class="previous"><a class="links" href="<?php echo $this->url(array('p' => $this->previous)); ?>?1<?php echo $plus; ?>" title="Página anterior">&laquo;</a></li>
+<?php 
+}
+else
+{
+?>
+<li class="previous-off">&laquo;</li>
+<?php 
+}
+?>
+
+<!-- Numbered page links -->
+<?php 
+foreach ($this->pagesInRange as $page)
+{
+	if ($page != $this->current)
+	{	
+?>
+<li><a class="links" href="<?php echo $this->url(array('p' => $page)); ?>?1<?php echo $plus; ?>" title="Ir para página '<?php echo $page; ?>'"><?php echo $page; ?></a></li>
+<?php 
+	}
+	else
+	{
+?>
+<li class="active"><?php echo $page . " "; ?></li>
+<?php 
+	}
+}
+?>
+
+<!-- Next page link -->
+<?php
+if (isset($this->next))
+{
+?>
+<li class="next"><a class="links" href="<?php echo $this->url(array('p' => $this->next)); ?>?1<?php echo $plus; ?>" title="Próxima página">&raquo;</a></li>
+<?php 
+}
+else
+{
+?>
+
+<li class="next-off">&raquo;</li>
+<?php 
+}
+?>
+
+<!-- Last page link -->
+<?php
+if (isset($this->next))
+{
+?>
+<li class="next"><a class="links" href="<?php echo $this->url(array('p' => $this->last)); ?>?1<?php echo $plus; ?>" title="Última página">&raquo;|</a></li>
+<?php 
+}
+else
+{
+?>
+<li class="next-off">&raquo;|</li>
+<?php 
+}
+?>
+<li class="previous-off">Página <?php echo $this->current; ?> de <?php echo $this->last; ?></li>
+</ul>

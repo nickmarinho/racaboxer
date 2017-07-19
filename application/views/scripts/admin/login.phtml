@@ -1,0 +1,50 @@
+<script type="text/javascript">
+<!--
+var modalboxGlobalDefaults = {
+	localizedStrings : {
+		messageCloseWindow : 'Fechar',
+		messageAjaxLoader : 'Aguarde ...',
+		errorMessageIfNoDataAvailable : '<strong>Nada para mostrar!</strong>',
+		errorMessageXMLHttpRequest : 'Erro: XML-Http-Request Status \"500\"',
+		errorMessageTextStatusError : 'Erro: Falha ao carregar AJAX'
+	}
+};
+//-->
+</script>
+
+<style type="text/css" media="screen">
+*[contenteditable]:hover {
+	background-color: #F9F9F9;
+}
+</style>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	$("[contenteditable]").bind('focus', function() {
+		$(this).data('original-text', $(this).text());
+		log(this, 'focus');
+	});
+
+	$("[contenteditable]").bind('blur', function() {
+		log(this, 'texto alterado de "' + $(this).data('original-text') + '" para "' + $(this).text());
+	});
+});
+
+function log (el, msg)
+{
+	console.log(el, msg);
+	$("#log").append("-> " + msg + "<br/>");
+}
+</script>
+
+<h1 style="text-align:center;" class="notice ui-widget-header" contenteditable="true">Please type user and password</h1>
+<?php echo $this->form; ?>
+
+<?php if($this->errorMessage != ""): ?>
+<div class="error" style="font-weight:bold;margin:10px 0;text-align:center;"><?php echo $this->errorMessage; ?></div>
+<?php endif; ?>
+<?php if($this->noerrorMessage != ""): ?>
+<div class="success"><?php echo $this->noerrorMessage; ?></div>
+<?php endif; ?>
+
+<div id="log"></div>
+

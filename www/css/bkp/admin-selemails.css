@@ -1,0 +1,18 @@
+table.sample, table.login, table.form{
+/* For WebKit (Safari, Google Chrome etc) */
+background: -webkit-gradient(linear, left top, left bottom, from(#EFD5AD), to(#EAA946));
+/* For Mozilla/Gecko (Firefox etc) */
+background: -moz-linear-gradient(center top , #EFD5AD, #EAA946) repeat scroll 0 0 transparent;
+/* For Internet Explorer 5.5 - 7 */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946);
+/* For Internet Explorer 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946)";
+
+border:0 none;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0.4em 0.4em 0.4em rgba(0, 0, 0, 0.5);
+margin:0 0 10px auto;
+padding: 0;
+}
+table.sample{color:#FFFFFF;width:99%;}
+.emails{background:url("/img/admin/return.png") no-repeat scroll right 0 #EAA946;border:1px dashed #E85C06;color:#FFFFFF;cursor:pointer;float:left;margin:0.5px;padding-left:2px;position:relative;width:49.0%;}

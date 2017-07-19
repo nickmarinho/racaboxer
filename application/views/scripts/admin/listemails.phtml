@@ -1,0 +1,97 @@
+<?php
+$pagename = $this->pagename;
+$email = $this->email;
+$name = $this->name;
+echo "<script>newfieldcount = " . count($this->datalist) . ";</script>\n";
+?>
+<script type="text/javascript">
+$("#menu").find("li").each(function(){ $(this).removeClass("ui-tabs-selected ui-state-active"); });
+$("#ema").addClass("ui-tabs-selected ui-state-active");
+$(".ui-icon").hover(
+	function(){ if($(this).parent().get(0).tagName == 'DIV'){ $(this).parent().addClass("ui-state-hover"); } },
+	function(){ if($(this).parent().get(0).tagName == 'DIV'){ $(this).parent().removeClass("ui-state-hover"); } }
+);
+</script>
+<br />
+<table class='sample' style="margin:0 auto;">
+ <tbody>
+  <tr>
+   <td style="text-align:left;width:25%;"><a href="#" class="button" onclick="javascript:addemails();" title="Add New">Add New</a></td>
+   <td style="text-align:center;">
+    <form id="search" method="post" action="">
+     Filter: <input type="text" id="fname" name="fname" value="" onkeypress="javascript:filter('emails',event);" size="35" />
+     <input type="text" id="femail" name="femail" value="" onkeypress="javascript:filter('emails',event);" size="35" />
+     <a class="button" onclick="filterm('emails');" title="Ok">Ok</a>
+	</form>
+   </td>
+  </tr>
+ </tbody>
+</table>
+
+<table class='sample' style="margin:0 auto;" id="grid">
+ <thead>
+  <tr>
+   <th style='width:40px;'>ID</th>
+   <th style='width:436px;'>Name</th>
+   <th style='width:430px;'>Email</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+   <th style='width:19px;'>&nbsp;</th>
+  </tr>
+ </thead>
+ <tbody id="list">
+<?php
+if(count($this->datalist) > 0)
+{
+	$c = 0;
+	foreach ($this->datalist as $data)
+	{
+		if($data['active'] == '1')
+		{
+			if(($c % 2) == 0){ $over = "overa"; }
+			else{ $over = "overb"; }
+		}
+		else{ $over = "noover"; }
+?>
+ <tr id='list_<?php echo $c; ?>' class="<?php echo $over; ?>" onmouseover="this.className='over'" onmouseout="this.className='<?php echo $over; ?>'">
+  <td class='tdpag-icons' style='width:40px;'><?php echo $data['id']; ?></td>
+  <td class="tdtextlink" id='td_<?php echo $c; ?>' style='width:436px;' onclick="javascript:editpageinline('emails', '<?php echo $data['id']; ?>', '<?php echo $c; ?>');"><?php
+if(!empty($name)) echo str_ireplace($name, "<b class='filterwords'>" . $name . "</b>", (stripslashes($data['name']))); 
+else echo (stripslashes($data['name']));
+?></td>
+  <td class="tdtextlink" style='width:430px;' onclick="javascript:sendmail('<?php echo $data['name']; ?>','<?php echo $data['email']; ?>');" title="SendMail: <?php echo $data['id']; ?>">
+<?php
+if(!empty($email)) echo str_ireplace($email, "<b class='filterwords'>" . $email . "</b>", stripslashes($data['email'])); 
+else echo stripslashes($data['email']);
+?>
+  </td>
+  <td class='tdpag-icons' id="activeonoff_<?php echo $data['id']; ?>">
+   <div class="ui-state-default ui-corner-all pag-icons" onclick="javascript:activeonoff('emails','<?php echo $data['id']; ?>','<?php echo $c; ?>');"><span class="ui-icon ui-icon-<?php if($data['active'] == '1'){ echo 'check'; } else{ echo 'cancel'; } ?>" title="Active OnOff ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' onclick="javascript:editpageinline('emails','<?php echo $data['id']; ?>','<?php echo $c; ?>');">
+   <div class="ui-state-default ui-corner-all pag-icons"><span class="ui-icon ui-icon-pencil" title="Edit ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+  <td class='tdpag-icons' onclick="javascript:removeemails('<?php echo $data['id']; ?>','<?php echo $c; ?>');">
+   <div class="ui-state-default ui-corner-all pag-icons"><span class="ui-icon ui-icon-trash" title="Remove ID: <?php echo $data['id']; ?>"></span></div>
+  </td>
+ </tr>
+<?php
+		$c++;
+	}
+}
+else
+{
+?>
+ <tr id="list_empty" class="<?php echo $dcolors[$d]; ?>" onmouseover="this.className='over'" onmouseout="this.className='<?php echo $dcolors[$d]; ?>'">
+  <td colspan='7' style='text-align:center;'><a class="button" onclick='addemails();'>Nothing in database, click here to add</a></td>
+ </tr>
+<?php
+ } ?>
+ </tbody>
+</table>
+
+<div id="paginationdiv">
+<?php 
+if($this->paginator->count() > 1) echo $this->paginationControl($this->paginator, 'Elastic', 'admin' . DS . 'pagination.phtml');
+?>
+</div>

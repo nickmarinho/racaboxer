@@ -1,0 +1,33 @@
+<?php
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle(SITE_TITLE);
+echo $this->headTitle() . "\n";
+
+$this->headLink()->appendStylesheet(SITE_PATH . '/css/admin.css') . "\n";
+$this->headLink()->appendStylesheet(SITE_PATH . '/css/themes/ui-lightness/jquery-ui-1.8.16.custom.css') . "\n";
+$this->headLink()->appendStylesheet(SITE_PATH . '/css//jquery.modalbox.css') . "\n";
+echo $this->headLink() . "\n";
+
+$this->headScript()->appendFile(SITE_PATH . '/js/jquery-1.7.1.min.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+$this->headScript()->appendFile(SITE_PATH . '/js/jquery-ui-1.8.16.custom.min.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+$this->headScript()->appendFile(SITE_PATH . '/js/jquery.blockUI.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+//$this->headScript()->appendFile(SITE_PATH . '/js/jquery.qtip-1.0.0-rc3.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+$this->headScript()->appendFile(SITE_PATH . '/js/jquery.ui.form.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+//$this->headScript()->appendFile(SITE_PATH . 'http://jqueryui.com/themeroller/themeswitchertool/', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+//$this->headScript()->appendFile(SITE_PATH . '/js/themeswitchertool.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+$this->headScript()->appendFile(SITE_PATH . '/js/jquery.modalbox-1.2.1-min.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+$this->headScript()->appendFile(SITE_PATH . '/js/ckeditor/ckeditor.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+
+$this->headScript()->appendFile(SITE_PATH . '/js/admin.js', 'text/javascript', array('charset' => 'utf-8')) . "\n";
+echo $this->headScript() . "\n";
+?>
+<link href="<?php echo SITE_PATH; ?>/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!--[if IE]>
+<link href="/css/admin-ie.css" media="screen" rel="stylesheet" type="text/css" />
+<style type="text/css">
+table.sample thead tr, table.login tr td:first-child{background:url('<?php echo SITE_PATH; ?>/img/admin/msg_bar.png') repeat-x;}
+table.login{border:1px solid #000;} 
+table.login td{border-bottom:1px solid #000;border-right:1px solid #000;}
+</style>
+<![endif]-->

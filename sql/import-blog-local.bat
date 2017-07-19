@@ -1,0 +1,1 @@
+mysql -uroot -pgmail racaboxer < rb-blog.sql

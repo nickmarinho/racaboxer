@@ -1,0 +1,100 @@
+<script type="text/javascript">
+var bcpfcnpj = ''; var bemail = ''; var bid_cliente = ''; var bname = ''; var bnome = ''; var btitle = ''; var buser = '';
+<?php 
+if(!empty($_SESSION['cpfcnpj'])) echo "bcpfcnpj = '" . $_SESSION['cpfcnpj'] . "';\n";
+if(!empty($_SESSION['email'])) echo "bemail = '" . $_SESSION['email'] . "';\n";
+if(!empty($_SESSION['id_cliente'])) echo "bid_cliente = '" . $_SESSION['id_cliente'] . "';\n";
+if(!empty($_SESSION['name'])) echo "bname = '" . $_SESSION['name'] . "';\n";
+if(!empty($_SESSION['nome'])) echo "bnome = '" . $_SESSION['nome'] . "';\n";
+if(!empty($_SESSION['title'])) echo "btitle = '" . $_SESSION['title'] . "';\n";
+if(!empty($_SESSION['user'])) echo "buser = '" . $_SESSION['user'] . "';\n";
+?>
+</script>
+<div id="paginationdiv" class='ui-widget ui-helper-clearfix'>
+<!-- First page link -->
+<?php
+if(isset($this->previous))
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons">
+ <a href="javascript:void(0);" onclick="javascript:listpage('<?php echo $_SESSION['pagename'] . "', '" . $this->first . "', bcpfcnpj, bemail, bid_cliente, bname, bnome, btitle, buser);"; ?>" title="First Page">
+  <span class="ui-icon ui-icon-arrowthickstop-1-w"></span>
+ </a>
+</span>
+<?php 
+}
+else
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons" title="First Page"><span class="ui-icon ui-icon-arrowthickstop-1-w"></span></span>
+<?php 
+}
+?>
+<!-- Previous page link -->
+<?php
+if (isset($this->previous))
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons"><a href="javascript:void(0);" onclick="javascript:listpage('<?php echo $_SESSION['pagename'] . "', '" . $this->previous . "', bcpfcnpj, bemail, bid_cliente, bname, btitle, buser);"; ?>" title="Previous Page"><span class="ui-icon ui-icon-arrowthick-1-w"></span></a></span>
+<?php 
+}
+else
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons" title="Previous Page"><span class="ui-icon ui-icon-arrowthick-1-w"></span></span>
+<?php 
+}
+?>
+<!-- Numbered page links -->
+<?php 
+foreach ($this->pagesInRange as $page)
+{
+	if ($page != $this->current)
+	{	
+?>
+<span class="ui-state-default ui-corner-all pag-icons no-icon"><a href="javascript:void(0);" onclick="javascript:listpage('<?php echo $_SESSION['pagename'] . "', '" . $page . "', bcpfcnpj, bemail, bid_cliente, bname, btitle, buser);"; ?>" title="Go to page '<?php echo $page; ?>'"><?php echo $page; ?></a></span>
+<?php 
+	}
+	else
+	{
+?>
+<span class="ui-state-default ui-corner-all pag-icons no-icon" title="Go to page '<?php echo $page; ?>'"><?php echo $page . " "; ?></span>
+<?php
+	}
+}
+?>
+<!-- Next page link -->
+<?php
+if (isset($this->next))
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons"><a href="javascript:void(0);" onclick="javascript:listpage('<?php echo $_SESSION['pagename'] . "', '" . $this->next . "', bcpfcnpj, bemail, bid_cliente, bname, btitle, buser);"; ?>" title="Next Page"><span class="ui-icon ui-icon-arrowthick-1-e"></span></a></span>
+<?php 
+}
+else
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons" title="Next Page"><span class="ui-icon ui-icon-arrowthick-1-e"></span></span>
+<?php 
+}
+?>
+<!-- Last page link -->
+<?php
+if (isset($this->next))
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons"><a href="javascript:void(0);" onclick="javascript:listpage('<?php echo $_SESSION['pagename'] . "', '" . $this->last . "', bcpfcnpj, bemail, bid_cliente, bname, btitle, buser);"; ?>" title="Last Page"><span class="ui-icon ui-icon-arrowthickstop-1-e"></span></a></span>
+<?php 
+}
+else
+{
+?>
+<span class="ui-state-default ui-corner-all pag-icons" title="Last Page"><span class="ui-icon ui-icon-arrowthickstop-1-e"></span></span>
+<?php 
+}
+?>
+</div>
+<div class='ui-widget ui-helper-clearfix' style="float:left;position:relative;text-align:center;width:982px;">
+ <span class="button" title="Página <?php echo $this->current; ?> de <?php echo $this->last; ?>">Página <?php echo $this->current; ?> de <?php echo $this->last; ?></span>
+ <span class="button" title="Total: <?php echo $this->totalItemCount; ?>">Total: <?php echo $this->totalItemCount; ?></span>
+</div>

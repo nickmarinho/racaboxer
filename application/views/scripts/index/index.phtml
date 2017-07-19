@@ -1,0 +1,45 @@
+<?php 
+if(count($this->homelist) > 0) {
+	$page = $this->homelist;
+	echo utf8_decode(stripslashes($page[0]['content']));
+}
+?>
+<div class='mainBar'></div>
+<h1 style='text-align:center;'>Confira 10 as postagens mais recentes do ano no nosso blog</h1>
+<?php 
+$urltoback = $_SERVER['HTTP_REFERER'] != "" ? $_SERVER['HTTP_REFERER'] : "/blog/";
+
+/*
+echo "<b>datalist</b>";
+echo "<pre>";
+print_r($this->datalist);
+echo "</pre>";
+ */
+
+if($this->datalist <> '') {
+	$anoatual = "";
+	foreach($this->datalist as $dl) {
+		$cdate = strtotime($dl['cdate']);
+		$cdate = date('d/m/Y g:ia', $cdate);
+?>
+     <hr />
+     <h3><a href="/blog/<?php echo date("Y-m-d", strtotime($dl['cdate'])) . "/" . $dl['id'] . "-" . $dl['url']; ?>.html"><?php echo utf8_decode(stripslashes($dl['title'])); ?></a></h3>
+     <p><?php echo utf8_decode(stripslashes($dl['meta_description'])); ?> - <?php echo $cdate; ?></p>
+<?php
+	}
+}
+?>
+<hr />
+<h5 style='text-align:center;'><a href="/blog/">Clique aqui para acessar nosso blog e curtir todas as postagens</a></h5>
+<hr />
+    <div id="pagination">
+     <ul id="socialbuttonnav">
+      <li><!-- Google plus one--><div><g:plusone size="tall" count="true"></g:plusone></div></li>
+      <li><!-- Twitter--><div><a name="twitter_share" data-count="vertical" href="http://twitter.com/share" class="twitter-share-button" >Tweet</a></div></li>
+      <li id="fb"><!-- Facebook like--><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" send="false" layout="box_count" width="64" show_faces="false" action="like" font=""></fb:like></li>
+      <li><!-- linkedin--><div><script type="in/share" data-counter="top"></script></div></li>
+      <li><!-- stumbleupon--><div><script src="http://www.stumbleupon.com/hostedbadge.php?s=5"></script></div></li>
+      <li><!-- digg--><div><a class="DiggThisButton DiggMedium" href="http://digg.com/submit?url=<?php echo urlencode($_SERVER['SCRIPT_URI']); ?>&amp;title=<?php  ?>"></a></div></li>
+      <li><!-- Buzz--><div><a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/postdata" data-button-style="normal-count"></a></div></li>
+     </ul>
+    </div>

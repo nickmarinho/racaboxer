@@ -1,0 +1,21 @@
+<?php echo $this->doctype() . "\n";?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+<?php echo $this->render('head.phtml') . "\n";?>
+ </head>
+ <body>
+  <noscript><h1>Por favor habilite ou use um navegador com suporte a javascript.</h1><h1>Please enable or use a browser that supports javascript.</h1><div style="margin:0 0 9999px 0;"></div></noscript>
+  <div id="topbar"></div>
+  <div id="menu" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+<?php echo $this->render('menu.phtml') . "\n";?>
+  </div>
+  <div id="layout" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+   <div id="maincontent">
+<?php echo $this->layout()->content; ?>
+   </div>
+  </div>
+  <div id="footer">
+<?php echo $this->render('footer.phtml') . "\n";?>
+  </div>
+ </body>
+</html>

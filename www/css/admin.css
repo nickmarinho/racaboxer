@@ -1,0 +1,171 @@
+html, body{margin:0;padding:0;}
+/* COMMON */
+body{
+/* For WebKit (Safari, Google Chrome etc) */
+/* background: -webkit-gradient(linear, left top, left bottom, from(#EFD5AD), to(#EAA946)); */
+/* For Mozilla/Gecko (Firefox etc) */
+background: -moz-linear-gradient(center top , #EFD5AD, #EAA946) repeat scroll 0 0 transparent;
+/* For Internet Explorer 5.5 - 7 */
+/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946); */
+/* For Internet Explorer 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946)";
+border:0 none;color:#0D0D0D;direction: ltr;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size: 11px;line-height: 1.28;margin:0;outline:medium none;padding:0;text-decoration:none;
+}
+
+a {color:#0F57AF;text-decoration:none;}
+a:hover{text-decoration:underline;}
+h1{color:#333333;font-size:20px;font-weight:bold;text-indent:20px;}
+h2{color:#333333;font-size:18px;font-weight:bold;text-indent:18px;}
+h3{color:#333333;font-size:16px;font-weight:bold;text-indent:16px;}
+h4{color:#333333;font-size:14px;font-weight:bold;text-indent:14px;}
+h5{color:#333333;font-size:12px;font-weight:bold;text-indent:12px;}
+b,strong{color:#333333;font-weight:bold;text-indent:12px;text-shadow:4px 4px 4px #CCCCCC;}
+p{text-indent:5px;}
+textarea{border:1px solid #000080;}
+input.text{border:1px solid #0F57AF;height:16px;}
+input.file{border:1px solid #0F57AF;height:25px;}
+p.field{font-size:0.9em;margin:0 0 10px;}
+dd ul{background:#AA6012;color:#FFFFFF;font-weight:bold;list-style-type:none;}
+dl dt{float:left;margin-bottom:2px;position:relative;width:150px;}
+dl dt label{color:#333333;font-size:12px;font-weight:bold;}
+dl dd{float:left;margin-bottom:2px;position:relative;width:790px;}
+fieldset{border:0px;}
+
+#button{margin:5px 0px 10px;}
+#topbar{
+/* For WebKit (Safari, Google Chrome etc) */
+/* background:url('../img/pix.png'), -webkit-gradient(linear, left top, left bottom, from(#EFD5AD), to(#EAA946)); */
+/* For Mozilla/Gecko (Firefox etc) */
+background:url('../img/pix.png'), -moz-linear-gradient(center top , #EAA946, #EFD5AD) repeat scroll 0 0 transparent;
+/* For Internet Explorer 5.5 - 7 */
+/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946); */
+/* For Internet Explorer 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946)";
+float:left;position:relative;top:0;width:100%;z-index:1;}
+#top {
+/* For WebKit (Safari, Google Chrome etc) */
+/* background: -webkit-gradient(linear, left top, left bottom, from(#DD834B), to(#E85C06)); */
+/* For Mozilla/Gecko (Firefox etc) */
+background:-moz-linear-gradient(center top , #DD834B, #E85C06) repeat scroll 0 0 transparent;
+/* For Internet Explorer 5.5 - 7 */
+/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#DD834B, endColorstr=#E85C06); */
+/* For Internet Explorer 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#DD834B, endColorstr=#E85C06)";
+cursor:pointer;height:100px;margin:0 auto;padding:0;width:1002px;
+}
+#topleft{float:left;padding:5px 0 0 100px;position:relative;width:600px;}
+#toplogotop{background:url("../img/logo-top.png") no-repeat scroll 0 0 transparent;float:left;height:49px;margin:0px 0px 0px 43px;position:relative;width:507px;}
+#toplogobottom{background:url("../img/logo-bottom.png") no-repeat scroll 0 0 transparent;float:left;height:21px;margin:0px 0px 0px 43px;position:relative;width:507px;}
+#topright{float:left;position:relative;width:282px;}
+.toprightsi{float:left;margin:0 10px 0 10px;position:relative;width:282px;}
+.toprightsi img{border:0;width:46px;}
+#menu{margin:0px;padding:0;width:99.5%;}
+/*#layout{/
+/ For WebKit (Safari, Google Chrome etc) /
+background:url('../img/pix.png'), -webkit-gradient(linear, left top, left bottom, from(#EFD5AD), to(#EAA946));
+/ For Mozilla/Gecko (Firefox etc) /
+background:url('../img/pix.png'), -moz-linear-gradient(center top , #EFD5AD, #EAA946) repeat scroll 0 0 transparent;
+/ For Internet Explorer 5.5 - 7 /
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946);
+/ For Internet Explorer 8 /
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946)";
+float:left;margin:0 auto;padding:0;position:relative;width:100%;}*/
+#layout{float: left;margin: 0 auto;padding: 0 0 20px;position: relative;width: 99.5%;}
+#maincontent{border: 0 none;margin: 0 auto;padding: 0;width: 1002px;}
+#loginbox{border:1px solid #0F57AF;margin:0 auto;padding:10px 10px 20px 10px;position:relative;width:682px;}
+#loginbox h1{text-align:center;}
+.zoom{cursor: url("/css/magnify.cur"), -moz-zoom-in !important;}
+.img{border:0px;cursor: pointer; opacity: 0.3;width:16px;}
+.img:hover{ opacity: 1; }
+.modaldetails_title{color:#003399;}
+.modaldetails_value{color:#336699;}
+.filterwords{color:#6A0;}
+table.sample, table.login, table.form{
+/* For WebKit (Safari, Google Chrome etc) */
+/* background: -webkit-gradient(linear, left top, left bottom, from(#EFD5AD), to(#EAA946)); */
+/* For Mozilla/Gecko (Firefox etc) */
+background: -moz-linear-gradient(center top , #EFD5AD, #EAA946) repeat scroll 0 0 transparent;
+/* For Internet Explorer 5.5 - 7 */
+/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946); */
+/* For Internet Explorer 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946)";
+border: 0 none;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0.4em 0.4em 0.4em rgba(0, 0, 0, 0.5);
+margin:0 0 10px auto;
+padding: 0;
+}
+table.sample{color:#FFFFFF;width:982px;}
+table.login{color:#FFFFFF;margin:0 auto;width:285px;}
+table.form{color:#FFFFFF;margin:10px auto;width:600px;}
+table.sample thead tr, table.login tr td:first-child, table.form tr td:first-child, #grid thead tr{
+/* For WebKit (Safari, Google Chrome etc) */
+/* background: -webkit-gradient(linear, left top, left bottom, from(#EFD5AD), to(#EAA946)); */
+/* For Mozilla/Gecko (Firefox etc) */
+background: -moz-linear-gradient(center top , #EFD5AD, #EAA946) repeat scroll 0 0 transparent;
+/* For Internet Explorer 5.5 - 7 */
+/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946); */
+/* For Internet Explorer 8 */
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFD5AD, endColorstr=#EAA946)";
+border-collapse:separate;
+color:#FFFFFF;
+font-family:"Trebuchet MS", sans-serif;
+font-size:11px;
+font-weight:bold;
+line-height:15px;
+font-style:normal;
+}
+table.sample td{border:0;color:black;font-size:12px;line-height:15px;padding:0 2px 0 2px;}
+table.sample th{font-size:10px;}
+/*table.sample .impar{background:#8CA6E2;}
+table.sample .par{background:#8A8AEA;}*/
+table.sample .impar{background:#FFF;}
+table.sample .par{background:#FFF;}
+/*table.sample .over{background:#8787AF;}*/
+table.sample .over{background:#F7DDB7;}
+table.sample .overa{background:#EED4AC;color:#000000;}
+table.sample .overb{background:#E5CCA7;color:#000000;}
+table.sample .noover{background:#CFB68F;color:#000000;}
+#tooltip{background:#1D44A1;border:1px solid #8CA6E2;color:#FFF;display:none;font-family:'Verdana, Arial, Helvetica, sans-serif';font-size:12px;font-weight:bold;padding:2px 5px;position:absolute;}
+.error{color:#FF0000;}
+.notice{
+	background: none repeat scroll 0 0 rgba(240, 150, 0, 0.2);
+	border: 1px solid rgba(210, 210, 0, 0.5);
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+	color:blue;
+	font-size: 13px;
+	font-weight: bold;
+	margin: 0 auto;
+	max-height: 42px;
+	padding: 10px;
+	width: 50%;
+}
+.success{color:green;}
+.emails{background:url("/img/admin/delete.png") no-repeat scroll right 0 #EAA946;border:1px dashed #E85C06;color:#FFFFFF;cursor:pointer;float:left;margin:0.5px;padding-left:2px;position:relative;width:49%;}
+#emails-selecionados{height:400px;overflow:auto;}
+.submit-group{left:60px;margin:15px 0 0 0;text-align:center;}
+.submit-groupb{float:left;text-align:center;position:relative;}
+#tdbuttons{padding:10px 0 10px 0;}
+
+#paginationdiv{float:left;margin:20px auto;position:relative;text-align:center;width:982px;}
+.tdpag-icons{text-align:center;width:19px;}
+.tdtextlink{color:#3551EA !important;cursor:pointer;text-decoration:none;}
+.tdtextlink:hover{color:#8899FC;text-decoration:underline;}
+.pag-icons{cursor:pointer;display:inline-block;font-size:11px;text-align:center;}
+.no-icon{color:#FF0000 !important;height: 16px;width: 16px;}
+
+#bottombar{background:scroll center 0 transparent;float: left;height:187px;margin:0;padding:20px 0 0 0;position: relative;width: 100%;}
+#bottombarback{background:scroll center center transparent;height:187px;margin:0 auto;position: relative;width:100%;}
+#footer{background:#E85C06;bottom:0;color:#FFF;float:left;font-size:11px;font-weight:bold;margin:0;padding:10px 0px;position:relative;text-align:center;text-decoration:none;width:100%;}
+#footer a{color:#FFF;text-decoration:none;}
+#footer a:hover{color:#CCC;text-decoration:underline;}
+
+/* !XDEBUG beautifying */
+.xdebug-error {background: #ddd;border-color: #666;font-size: 12px;margin: 0 auto 10px auto;width: 95%;}
+.xdebug-error th, .xdebug-error td {padding: 2px;}
+.xdebug-error th {background: #ccc;}
+.xdebug-error td {/* background: #fee; */}
+.xdebug-error span {display: none;}
+.xdebug-error tr:first-child {background: url(../img/xdebug-logo.png) #ccc no-repeat left top;height:20px;padding: 20px 4px 20px 100px;width:20px;}
+.xdebug-error_callStack th {background: #666;color: #ddd;}
